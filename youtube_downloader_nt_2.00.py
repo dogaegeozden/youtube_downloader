@@ -10,6 +10,7 @@ import time
 # The required module
 rM = 'pytube'
 
+# Operating system check
 if os.name == "nt":
 
     # Get username
@@ -47,14 +48,20 @@ if os.name == "nt":
                     # Destionation path for videos
                     dest = f'C:\\Users\\{userN}\\Videos'
 
+                    # Content Selection
                     yt = YouTube(f'{question2}')
+                    
+                    # Filtering
                     yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download(output_path=dest)
+                    
+                    # Success Message
                     print(f'{yt.title} has been successfully downloaded to your Videos folder.')
 
                 elif question1 == "a":
                     # Destionation path for musics
                     dest = f'C:\\Users\\{userN}\\Music'
 
+                    # Content Selection
                     yt = YouTube(f'{question2}')
 
                     # extract only audio
@@ -68,7 +75,7 @@ if os.name == "nt":
                     new_file = base + '.mp3'
                     os.rename(out_file, new_file)
 
-                    # result of success
+                    # Success Message
                     print(f'{yt.title} has been successfully downloaded to your Music folder.')
 
             except:
